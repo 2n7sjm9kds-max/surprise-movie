@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>For You</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:#050505;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}body{min-height:100svh;overflow-x:hidden}.screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 20px}.intro{position:fixed;inset:0;background:#050505;z-index:5;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s}.intro.hide{opacity:0;visibility:hidden;pointer-events:none}.card{text-align:center;max-width:360px}.eyebrow{font-size:11px;letter-spacing:.28em;opacity:.55;margin-bottom:28px}.title{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.5;font-weight:400;letter-spacing:.05em;margin:0 0 34px}.sub{font-size:12px;letter-spacing:.12em;opacity:.55;margin-bottom:30px}.open{appearance:none;border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:999px;padding:13px 34px;font-size:12px;letter-spacing:.22em;cursor:pointer}.main{width:100%;max-width:680px;margin:auto;text-align:center;padding:42px 16px 50px;opacity:0;transform:translateY(10px);transition:opacity 1s ease .2s,transform 1s ease .2s}.main.show{opacity:1;transform:none}.hint{font-size:11px;letter-spacing:.18em;opacity:.55;margin-bottom:20px}.video-wrap{width:min(100%,512px);margin:0 auto;background:#111;border-radius:10px;overflow:hidden;box-shadow:0 12px 50px rgba(0,0,0,.5)}video{display:block;width:100%;height:auto;background:#000}.message{font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.8;letter-spacing:.06em;margin:30px 0 0}.small{font-size:11px;opacity:.4;letter-spacing:.12em;margin-top:18px}.replay{margin-top:28px;border:0;background:transparent;color:#fff;opacity:.45;font-size:11px;letter-spacing:.15em;cursor:pointer} </style>
+</head>
+<body>
+<section class="intro" id="intro">
+  <div class="card">
+    <div class="eyebrow">FOR YOU</div>
+    <h1 class="title">少しだけ、<br>時間をください。</h1>
+    <div class="sub">最後まで見てほしい。</div>
+    <button class="open" id="open">OPEN</button>
+  </div>
+</section>
+<main class="main" id="main">
+  <div class="hint">音ありで見てね</div>
+  <div class="video-wrap"><video id="video" controls playsinline preload="metadata"><source src="surprise.mp4" type="video/mp4"></video></div>
+  <div class="message">これを見てくれて、ありがとう。</div>
+  <div class="small">FOR YOU</div>
+  <button class="replay" id="replay">REPLAY</button>
+</main>
+<script>
+const intro=document.getElementById('intro'),main=document.getElementById('main'),video=document.getElementById('video');
+document.getElementById('open').addEventListener('click',()=>{intro.classList.add('hide');main.classList.add('show');setTimeout(()=>{video.play().catch(()=>{});},450);});
+document.getElementById('replay').addEventListener('click',()=>{video.currentTime=0;video.play().catch(()=>{});});
+</script>
+</body>
+</html>
